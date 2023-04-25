@@ -1,0 +1,49 @@
+.defi {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  /* background-image: linear-gradient(
+    45deg,
+    var(--primary-purple) 0%,
+    var(--primary-blue) 100%
+  ); */
+  background-color: black;
+}
+
+.metamask-connect {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 400px;
+  height: 180px;
+  border-radius: 25px;
+  border: 1px solid white;
+  color: white;
+}
+
+.metamask-connect h4 {
+  padding: 20px;
+}
+
+.defi-container {
+  width: 90%;
+  display: flex;
+  height: 500px;
+}
+
+.defi-card {
+  height: 180px;
+  width: 400px;
+  /* background-image: linear-gradient(blue 0%, grey 100%); */
+  background-color: white;
+  margin: 10px;
+}
+
+.defi-card:hover {
+  scale: 1.05;
+  transition: 0.4s;
+}
