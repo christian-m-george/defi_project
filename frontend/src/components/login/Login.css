@@ -1,0 +1,32 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+.login-form {
+  height: 300px;
+  width: 60%;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-inputs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-inputs label {
+  padding: 10px;
+}
+
+.form-other {
+  display: flex;
+  flex-direction: column;
+}

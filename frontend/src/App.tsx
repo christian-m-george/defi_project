@@ -6,6 +6,7 @@ import { Navbar } from "./components/nav/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/home/Home";
 import Defi from "./components/defi/Defi";
+import Login from "./components/login/Login";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/defi" element={<Defi />} />
         </Routes>
       </Router>

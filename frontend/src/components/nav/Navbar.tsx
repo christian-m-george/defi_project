@@ -20,6 +20,11 @@ export const Navbar = (): JSX.Element => {
             <a href="/">Home</a>
           </li>
           <li className="nav-item">
+            <Link to="/login" className="btn">
+              Login
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link to="/defi" className="btn">
               Use Defi
             </Link>
