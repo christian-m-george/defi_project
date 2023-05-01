@@ -14,6 +14,7 @@ export async function findSessionById(id: string) {
 }
 
 export async function signRefreshToken({ userId }: { userId: string }) {
+  // console.log('at refresh')
   const session = await createSession({
     userId,
   });
@@ -31,10 +32,11 @@ export async function signRefreshToken({ userId }: { userId: string }) {
 }
 
 export function signAccessToken(user: DocumentType<User>) {
+  // console.log('at access')
   const payload = omit(user.toJSON(), privateFields);
 
   const accessToken = signJwt(payload, {
-    expiresIn: "15m",
+    expiresIn: "60m",
   });
 
   return accessToken;

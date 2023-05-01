@@ -7,8 +7,8 @@
   background-color: black;
 }
 
-.login-form {
-  height: 300px;
+.register-form {
+  height: 600px;
   width: 30%;
   background-color: whitesmoke;
   display: flex;

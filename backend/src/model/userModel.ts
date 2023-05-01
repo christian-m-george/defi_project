@@ -49,8 +49,12 @@ export class User {
   verificationCode: string;
   @prop()
   passwordResetCode: string | null;
-  @prop({ defalut: false })
+  @prop({ default: false })
   verified: boolean;
+  @prop({ default: 0 })
+  btcBalance: number;
+  @prop({ default: 0 })
+  ethBalance: number;
   async validatePassword(this: DocumentType<User>, candidatePassword: string) {
     try {
       return await argon2.verify(this.password, candidatePassword);

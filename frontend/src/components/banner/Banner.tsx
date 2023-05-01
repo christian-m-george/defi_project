@@ -1,7 +1,7 @@
-import React from "react";
-import BannerVideo from "../../assets/bannerVid.mp4";
-import { Link } from "react-router-dom";
-import "./Banner.css";
+import React from 'react';
+import BannerVideo from '../../assets/bannerVid.mp4';
+import { Link } from 'react-router-dom';
+import './Banner.css';
 
 const Banner = () => {
   return (
@@ -22,9 +22,9 @@ const Banner = () => {
           <button className="btn btn-outline">FAQ</button>
         </div>
       </div>
-      <div className="bottom-text">
+      {/* <div className="bottom-text">
         <h2>Total Volume Secured: $0</h2>
-      </div>
+      </div> */}
     </div>
   );
 };

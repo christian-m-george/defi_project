@@ -1,10 +1,11 @@
 .defi {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   height: 100%;
   width: 100%;
+  padding-top: 50px;
   /* background-image: linear-gradient(
     45deg,
     var(--primary-purple) 0%,
@@ -36,14 +37,36 @@
 }
 
 .defi-card {
-  height: 180px;
-  width: 400px;
+  height: 375px;
+  width: 700px;
+  padding: 10px;
   /* background-image: linear-gradient(blue 0%, grey 100%); */
   background-color: white;
-  margin: 10px;
+  margin: 20px;
+  background-color: black;
+  border: 6px solid white;
+  border-radius: 8px;
 }
 
 .defi-card:hover {
   scale: 1.05;
   transition: 0.4s;
+}
+
+.icon-container {
+  width: 80px;
+}
+
+.btc {
+  color: gold;
+}
+
+.eth {
+  color: blue;
+  font-size: 45px;
+}
+
+
+.defi-card-header {
+  color: white;
 }

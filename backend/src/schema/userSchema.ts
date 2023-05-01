@@ -1,4 +1,4 @@
-import { object, string, TypeOf } from "zod";
+import { number, object, string, TypeOf } from "zod";
 
 export const createUserSchema = object({
   body: object({
@@ -56,6 +56,21 @@ export const resetPasswordSchema = object({
   }),
 });
 
+export const updateBalanceSchma = object({
+  body: object({
+    coin: string({
+      required_error: "coin must be explicitly named"
+    }),
+    action: string({
+      required_error: "action must be explicitly named"
+    }),
+    value: number({
+      required_error: 'number must be explicitly named'
+    })
+  })
+})
+
+export type UpdateBalanceInput = TypeOf<typeof updateBalanceSchma>["body"]
 export type CreateUserInput = TypeOf<typeof createUserSchema>["body"];
 export type VerifyUserInput = TypeOf<typeof verifyUserSchema>["params"];
 export type ForgotPasswordInput = TypeOf<typeof forgotPasswordSchema>["body"];

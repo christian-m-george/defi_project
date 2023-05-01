@@ -3,6 +3,7 @@ import {
   CreateUserInput,
   ForgotPasswordInput,
   ResetPasswordInput,
+  UpdateBalanceInput,
   VerifyUserInput,
 } from "../schema/userSchema";
 import {
@@ -25,7 +26,7 @@ export async function createUserHandler(
       from: "defitest@defitest.com",
       to: user.email,
       subject: "please verify your account",
-      text: `verification code ${user.verificationCode}. ID: ${user._id}`,
+      html: `<a href="http://localhost:3030/api/users/verify/${user._id}/${user.verificationCode}">Click to verify</a>`,
     });
     return res.send("user succesfully created");
   } catch (e: any) {
@@ -117,4 +118,48 @@ export async function resetPasswordHandler(
 
 export async function getCurrentUserHandler(req: Request, res: Response) {
   return res.send(res.locals.user);
+}
+
+export async function updateBalanceHandler(
+  req: Request<{}, {}, UpdateBalanceInput>,
+  res: Response
+  ) {
+  // console.log(res.locals.user)
+  await findUserByID(res.locals.user).then((user) => {
+    const {coin, action, value} = req.body;
+    if(user) {
+      const amount = action !== 'ADD' ? value * -1 : value;
+      if (coin === 'BTC') {
+        const updatedBalance = user.btcBalance += amount;
+        user.btcBalance = updatedBalance
+        user.save().then((updatedUser) => {
+          // console.log(updatedUser)
+          res.send(updatedUser)
+        })
+      } else if (coin === 'ETH') {
+        const updatedBalance = user.ethBalance += amount;
+        user.ethBalance = updatedBalance
+        user.save().then((updatedUser) => {
+          console.log(updatedUser)
+          res.send(updatedUser)
+        })
+      } else {
+        res.send({message: "Could not update balance"})
+      }
+    }
+  }).catch((_err) => {
+    res.sendStatus(500).send({message: "Could not update balance"})
+  })
+}
+
+export async function getBalanceHandler(
+  req: Request, res: Response) {
+    console.log('here')
+    await findUserByID(res.locals.user).then((data) => {
+      const balances = {
+        ethBalance: data?.ethBalance,
+        btcBalance: data?.btcBalance
+      };
+      res.send(balances)
+    })
 }

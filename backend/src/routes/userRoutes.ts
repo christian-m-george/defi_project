@@ -2,8 +2,10 @@ import express from "express";
 import {
   createUserHandler,
   forgotPasswordHandler,
+  getBalanceHandler,
   getCurrentUserHandler,
   resetPasswordHandler,
+  updateBalanceHandler,
   verifyUserHandler,
 } from "../controller/userController";
 import validateResource from "../middleware/validateResource";
@@ -11,8 +13,10 @@ import {
   createUserSchema,
   forgotPasswordSchema,
   resetPasswordSchema,
+  updateBalanceSchma,
   verifyUserSchema,
 } from "../schema/userSchema";
+import requireUser from "../middleware/requireUser";
 
 const router = express.Router();
 
@@ -25,7 +29,7 @@ router.post(
   }
 );
 
-router.post(
+router.get(
   "/api/users/verify/:id/:verificationCode",
   validateResource(verifyUserSchema),
   verifyUserHandler
@@ -38,10 +42,23 @@ router.post(
 );
 
 router.post(
-  "api/userse/resetpassword/:id/:passwordResetCode",
+  "/api/users/resetpassword/:id/:passwordResetCode",
   validateResource(resetPasswordSchema),
   resetPasswordHandler
 );
+
+router.get(
+  "/api/users/balance",
+  requireUser,
+  getBalanceHandler
+);
+
+router.post(
+  "/api/users/balance",
+  validateResource(updateBalanceSchma),
+  updateBalanceHandler
+);
+
 
 router.get("/api/users/me", getCurrentUserHandler);
 
